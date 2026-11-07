@@ -1,12 +1,15 @@
-import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import HomePage from './pages/HomePage';
-import KitchenDisplayPage from './pages/kitchen/KitchenDisplayPage';
-import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import MenuPage from './pages/MenuPage';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrderStatusPage from './pages/OrderStatusPage';
+import OrderHistoryPage from './pages/OrderHistoryPage';
 import LoginPage from './pages/LoginPage';
-import KitchenLoginPage from './pages/kitchen/KitchenLoginPage';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import CompleteProfile from './pages/CompleteProfile';
 import NotFoundPage from './pages/NotFoundPage';
 import { loadUser } from './redux/authSlice';
 import { useDispatch } from 'react-redux';
@@ -58,7 +61,36 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/menu/:outletSlug" element={<MenuPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
+
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute roles={['customer']}>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/order/:orderId"
+          element={
+            <ProtectedRoute roles={['customer']}>
+              <OrderStatusPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute roles={['customer']}>
+              <OrderHistoryPage />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/complete-profile"

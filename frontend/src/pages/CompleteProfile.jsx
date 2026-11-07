@@ -42,58 +42,73 @@ export default function CompleteProfile() {
         : value,
     }));
   };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        try {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-            const getCurrentLocation = () => {
-                return new Promise((resolve, reject) => {
-                    if (!navigator.geolocation) {
-                        console.log('Geolocation is not supported')
-                        reject(new Error('Geolocation is not supported'));
-                        return;
-                    }
+    if (loading) return;
 
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            resolve({
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            });
-                        },
-                        () => reject(
-                            new Error('Please allow location access to continue')
-                        ),
-                        {
-                            enableHighAccuracy: true,
-                            timeout: 10000,
-                            maximumAge: 0,
-                        }
-                    );
-                });
-            };
-            const coordinates = await getCurrentLocation();
-            console.log('coordinates', coordinates);
+    try {
+      setLoading(true);
 
-            await dispatch(
-                updateUserProfile({
-                    name: name.trim(),
-                    address: {
-                        area: area.trim(),
-                        city: city.trim(),
-                        pincode: pincode.trim(),
-                        coordinates,
-                    },
-                })
-            ).unwrap();
+      const getCurrentLocation = () => {
+        return new Promise((resolve, reject) => {
+          if (!navigator.geolocation) {
+            reject(new Error('Geolocation is not supported'));
+            return;
+          }
 
-            toast.success('Profile completed successfully!');
-            navigate('/');
-        } catch (error) {
-            toast.error(error || 'Failed to complete profile');
-        }
-    };
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              resolve({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              });
+            },
+            (error) => {
+              reject(new Error('Please allow location access to continue'));
+            },
+            {
+              enableHighAccuracy: true,
+              timeout: 10000,
+              maximumAge: 0,
+            }
+          );
+        });
+      };
+
+      const coordinates = await getCurrentLocation();
+
+      const payload = {
+        name: formData.name.trim(),
+        address: {
+          area: formData.area.trim(),
+          city: formData.city.trim(),
+          pincode: formData.pincode.trim(),
+          coordinates,
+        },
+      };
+
+      console.log('Submitting profile update with payload:', payload);
+
+      const updatedUser = await dispatch(
+        updateUserProfile(payload)
+      ).unwrap();
+
+      toast.success('Profile completed successfully!');
+
+      navigate('/');
+    } catch (error) {
+      console.error('Profile update error:', error);
+
+      toast.error(
+        typeof error === 'string'
+          ? error
+          : error?.message || 'Failed to complete profile'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-neutral-50">
