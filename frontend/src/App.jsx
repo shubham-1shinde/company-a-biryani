@@ -8,7 +8,17 @@ import CheckoutPage from './pages/CheckoutPage';
 import OrderStatusPage from './pages/OrderStatusPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import LoginPage from './pages/LoginPage';
+import PartyOrderPage from './pages/PartyOrderPage';
+import PartyOrderHistoryPage from './pages/PartyOrderHistoryPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import AdminOrdersPage from './pages/admin/AdminOrdersPage';
+import AdminRepeatCustomersPage from './pages/admin/AdminRepeatCustomersPage';
+import AdminOutletsPage from './pages/admin/AdminOutletsPage';
+import AdminMenuPage from './pages/admin/AdminMenuPage';
+import AdminPartyOrdersPage from './pages/admin/AdminPartyOrdersPage';
+import KitchenDisplayPage from './pages/kitchen/KitchenDisplayPage';
+import KitchenLoginPage from './pages/kitchen/KitchenLoginPage';
+import CateringDashboardPage from './pages/catering/CateringDashboardPage';
 import CompleteProfile from './pages/CompleteProfile';
 import NotFoundPage from './pages/NotFoundPage';
 import { loadUser } from './redux/authSlice';
@@ -92,6 +102,22 @@ export default function App() {
           }
         />
 
+        <Route 
+          path="/party-order" 
+          element={
+            <PartyOrderPage />
+          } 
+        />
+
+        <Route
+          path="/party-orders"
+          element={
+            <ProtectedRoute roles={['customer']}>
+              <PartyOrderHistoryPage />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/complete-profile"
           element={
@@ -116,6 +142,51 @@ export default function App() {
         />
 
         <Route
+          path="/admin/menu"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <AdminMenuPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <AdminOrdersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/customers"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <AdminRepeatCustomersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/outlets"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <AdminOutletsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/party-orders"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <AdminPartyOrdersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/kitchen/login"
           element={<KitchenLoginPage />}
         />
@@ -125,6 +196,16 @@ export default function App() {
           element={
             <ProtectedRoute roles={['kitchen']}>
               <KitchenDisplayPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/catering" element={<Navigate to="/catering/dashboard" replace />} />
+        <Route
+          path="/catering/dashboard"
+          element={
+            <ProtectedRoute roles={['catering_manager']}>
+              <CateringDashboardPage />
             </ProtectedRoute>
           }
         />
