@@ -19,6 +19,7 @@ import AdminPartyOrdersPage from './pages/admin/AdminPartyOrdersPage';
 import KitchenDisplayPage from './pages/kitchen/KitchenDisplayPage';
 import KitchenLoginPage from './pages/kitchen/KitchenLoginPage';
 import CateringDashboardPage from './pages/catering/CateringDashboardPage';
+import CateringOrdersPage from './pages/catering/CateringOrdersPage';
 import CompleteProfile from './pages/CompleteProfile';
 import NotFoundPage from './pages/NotFoundPage';
 import { loadUser } from './redux/authSlice';
@@ -70,10 +71,34 @@ export default function App() {
       />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/menu/:outletSlug" element={<MenuPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/login" element={<LoginPage />} />
+
+        <Route 
+          path="/" 
+          element={
+            <HomePage />
+          } 
+        />
+
+        <Route 
+          path="/menu/:outletSlug" 
+          element={
+            <MenuPage />
+          } 
+        />
+
+        <Route 
+          path="/cart" 
+          element={
+            <CartPage />
+          } 
+        />
+        
+        <Route 
+          path="/login" 
+          element={
+            <LoginPage />
+          } 
+        />
 
         <Route
           path="/checkout"
@@ -206,6 +231,14 @@ export default function App() {
           element={
             <ProtectedRoute roles={['catering_manager']}>
               <CateringDashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/catering/orders"
+          element={
+            <ProtectedRoute roles={['catering_manager']}>
+              <CateringOrdersPage />
             </ProtectedRoute>
           }
         />
