@@ -177,23 +177,6 @@ export default function KitchenLoginPage() {
               )}
             </button>
           </form>
-
-          {/* Demo Credentials Box */}
-          <div className="mt-6 pt-6 border-t border-neutral-800/80">
-            <div className="bg-neutral-900/60 border border-neutral-800 p-3 rounded text-center">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 block mb-1">
-                Demo Outlet Account
-              </span>
-
-              <p className="text-[11px] font-mono text-neutral-300 select-all">
-                kitchen.kondapur@company-a-biryani.in
-              </p>
-
-              <p className="text-[11px] font-mono text-neutral-400 select-all">
-                Pass: <span className="text-neutral-300">Kitchen@123</span>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
