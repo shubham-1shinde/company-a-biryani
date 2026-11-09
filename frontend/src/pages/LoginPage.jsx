@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
@@ -273,7 +272,7 @@ export default function LoginPage() {
 
               {devOtp && (
                 <div className="bg-amber-50 border border-amber-200 rounded-sm p-3.5 mb-5 text-xs font-mono text-amber-900">
-                  <span className="font-bold">Dev Mode OTP: </span>
+                  <span className="font-bold">Demo Account OTP: </span>
                   <span className="font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">
                     {devOtp}
                   </span>
