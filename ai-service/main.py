@@ -13,7 +13,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
 from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_classic.chains import LLMChain
+from langchain.chains import LLMChain
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
