@@ -87,8 +87,7 @@ export default function CompleteProfile() {
           coordinates,
         },
       };
-
-      console.log('Submitting profile update with payload:', payload);
+      console.log('Payload:', payload);
 
       const updatedUser = await dispatch(
         updateUserProfile(payload)
@@ -117,6 +116,7 @@ export default function CompleteProfile() {
       <main className="px-4 py-10 sm:py-16">
         <div className="max-w-xl mx-auto">
 
+          {/* Header */}
           <div className="text-center mb-8">
 
             <div className="w-16 h-16 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto mb-5">
@@ -137,6 +137,7 @@ export default function CompleteProfile() {
             </p>
           </div>
 
+          {/* Profile Form */}
           <div className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-5 sm:p-8">
 
             <div className="flex items-center gap-3 mb-7">
@@ -156,6 +157,7 @@ export default function CompleteProfile() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
 
+              {/* Full Name */}
               <div>
                 <label
                   htmlFor="name"
@@ -184,6 +186,7 @@ export default function CompleteProfile() {
                 </div>
               </div>
 
+              {/* Address Section */}
               <div className="pt-3 border-t border-neutral-100">
 
                 <div className="flex items-center gap-3 mb-5">
@@ -201,6 +204,7 @@ export default function CompleteProfile() {
                   </div>
                 </div>
 
+                {/* Area */}
                 <div className="mb-5">
                   <label
                     htmlFor="area"
@@ -228,6 +232,7 @@ export default function CompleteProfile() {
                   </div>
                 </div>
 
+                {/* City */}
                 <div className="mb-5">
                   <label
                     htmlFor="city"
@@ -255,6 +260,7 @@ export default function CompleteProfile() {
                   </div>
                 </div>
 
+                {/* Pincode */}
                 <div>
                   <label
                     htmlFor="pincode"
@@ -287,6 +293,7 @@ export default function CompleteProfile() {
 
               </div>
 
+              {/* Location Information */}
               <div className="rounded-xl bg-brand-50/70 border border-brand-100 p-4 flex gap-3">
                 <LocateFixed
                   size={19}
@@ -305,6 +312,7 @@ export default function CompleteProfile() {
                 </div>
               </div>
 
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={loading}
@@ -326,6 +334,7 @@ export default function CompleteProfile() {
             </form>
           </div>
 
+          {/* Privacy note */}
           <div className="flex items-center justify-center gap-2 mt-6 text-xs text-neutral-400">
             <ShieldCheck size={15} />
             <span>Your location details are kept secure.</span>

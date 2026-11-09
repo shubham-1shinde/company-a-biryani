@@ -22,6 +22,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
 
+          {/* Brand Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 bg-[#E85D35] rounded-sm flex items-center justify-center text-white shadow-sm group-hover:bg-[#d44c25] transition-colors">
               <ChefHat size={18} />
@@ -32,6 +33,7 @@ export default function Navbar() {
             </span>
           </Link>
 
+          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-2">
 
             {user?.role === 'admin' && (
@@ -81,8 +83,10 @@ export default function Navbar() {
             )}
           </nav>
 
+          {/* Right Action Icons & Auth */}
           <div className="flex items-center gap-3">
 
+            {/* Cart Icon */}
             <Link
               to="/cart"
               className="relative p-2 text-neutral-700 hover:text-neutral-900 transition-colors rounded-sm hover:bg-neutral-50"
@@ -97,6 +101,7 @@ export default function Navbar() {
               )}
             </Link>
 
+            {/* User Profile & Menu Dropdown */}
             {user ? (
               <div className="relative group hidden md:block">
                 <button className="flex items-center gap-2 p-2 text-neutral-700 hover:text-neutral-900 rounded-sm hover:bg-neutral-50 transition-colors">
@@ -107,6 +112,7 @@ export default function Navbar() {
                   </span>
                 </button>
 
+                {/* Hover Dropdown Box */}
                 <div className="absolute right-0 top-full mt-1 w-52 bg-white border border-neutral-200 rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
 
                   <div className="p-3.5 border-b border-neutral-100 bg-neutral-50/50">
@@ -156,6 +162,7 @@ export default function Navbar() {
               </Link>
             )}
 
+            {/* Mobile Menu Toggle Button */}
             <button
               className="md:hidden p-2 text-neutral-700 hover:text-neutral-900"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -167,6 +174,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Navigation Drawer */}
       {menuOpen && (
         <div className="md:hidden border-t border-neutral-200/80 bg-white px-6 py-4 space-y-3 font-mono text-xs">
 
