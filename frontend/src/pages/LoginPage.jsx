@@ -298,19 +298,6 @@ export default function LoginPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="text-xs font-mono uppercase tracking-wider text-neutral-600 block mb-2">
-                    Your Name <span className="text-neutral-400 font-normal">(Optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Arjun Reddy"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-white border border-neutral-300 rounded-sm px-4 py-3 text-sm font-sans text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#E85D35] focus:ring-1 focus:ring-[#E85D35] transition-all"
-                  />
-                </div>
-
                 <button 
                   type="submit" 
                   disabled={loading} 

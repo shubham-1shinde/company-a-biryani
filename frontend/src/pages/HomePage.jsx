@@ -320,6 +320,7 @@ export default function HomePage() {
       )}
 
       
+      
       {/* Outlets */}
       <section id="outlets" className="page-container">
         <div className="mb-5">
@@ -354,17 +355,13 @@ export default function HomePage() {
                 hasCustomerLocation &&
                 outlet.isDeliverable === false;
 
-              return (
-                <Link
-                  key={outlet._id}
-                  to={`/menu/${outlet.slug}`}
-                  className={`card p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group ${
-                    isNearest ? 'ring-2 ring-brand-500' : ''
-                  }`}
-                >
+              const outletContent = (
+                <>
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="font-semibold text-neutral-900 group-hover:text-brand-600 transition-colors">
+                      <h3 className={`font-semibold text-neutral-900 ${
+                        !isNotDeliverable ? 'group-hover:text-brand-600 transition-colors' : ''
+                      }`}>
                         {outlet.name}
                       </h3>
 
@@ -375,10 +372,12 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    <ChevronRight
-                      size={18}
-                      className="text-neutral-400 group-hover:text-brand-600 transition-colors mt-0.5"
-                    />
+                    {!isNotDeliverable && (
+                      <ChevronRight
+                        size={18}
+                        className="text-neutral-400 group-hover:text-brand-600 transition-colors mt-0.5"
+                      />
+                    )}
                   </div>
 
                   {/* Delivery status */}
@@ -429,16 +428,42 @@ export default function HomePage() {
                       FSSAI: {outlet.fssaiNumber}
                     </span>
 
-                    <span className="text-xs font-medium text-brand-600">
-                      View Menu →
+                    <span className={`text-xs font-medium ${
+                      isNotDeliverable ? 'text-red-600' : 'text-brand-600'
+                    }`}>
+                      {isNotDeliverable
+                        ? 'Delivery Unavailable'
+                        : 'View Menu →'}
                     </span>
                   </div>
+                </>
+              );
+
+              return isNotDeliverable ? (
+                <div
+                  key={outlet._id}
+                  className="card p-5 opacity-60 cursor-not-allowed"
+                  aria-disabled="true"
+                  title="This outlet does not deliver to your location"
+                >
+                  {outletContent}
+                </div>
+              ) : (
+                <Link
+                  key={outlet._id}
+                  to={`/menu/${outlet.slug}`}
+                  className={`card p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group ${
+                    isNearest ? 'ring-2 ring-brand-500' : ''
+                  }`}
+                >
+                  {outletContent}
                 </Link>
               );
             })}
           </div>
         )}
       </section>
+
 
 
       {/* Footer */}
