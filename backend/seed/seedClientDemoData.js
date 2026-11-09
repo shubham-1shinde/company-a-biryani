@@ -16,16 +16,16 @@ const DEMO_ORDER_PREFIX = 'DEMO-HIST-';
 const DEMO_PARTY_PREFIX = 'DEMO-PARTY-';
 
 const demoCustomers = [
-  { name: 'Aarav Mehta', mobile: '9899000001', email: 'aarav.mehta.demo@khaivio.test', pincode: '500081' },
-  { name: 'Ananya Rao', mobile: '9899000002', email: 'ananya.rao.demo@khaivio.test', pincode: '500032' },
-  { name: 'Rohan Sharma', mobile: '9899000003', email: 'rohan.sharma.demo@khaivio.test', pincode: '500034' },
-  { name: 'Priya Nair', mobile: '9899000004', email: 'priya.nair.demo@khaivio.test', pincode: '500016' },
-  { name: 'Ishaan Reddy', mobile: '9899000005', email: 'ishaan.reddy.demo@khaivio.test', pincode: '500003' },
-  { name: 'Meera Kulkarni', mobile: '9899000006', email: 'meera.kulkarni.demo@khaivio.test', pincode: '500074' },
-  { name: 'Kabir Joshi', mobile: '9899000007', email: 'kabir.joshi.demo@khaivio.test', pincode: '500060' },
-  { name: 'Saanvi Iyer', mobile: '9899000008', email: 'saanvi.iyer.demo@khaivio.test', pincode: '500089' },
-  { name: 'Vihaan Patel', mobile: '9899000009', email: 'vihaan.patel.demo@khaivio.test', pincode: '500049' },
-  { name: 'Diya Menon', mobile: '9899000010', email: 'diya.menon.demo@khaivio.test', pincode: '500039' },
+  { name: 'Aarav Mehta', mobile: '9899000001', email: 'aarav.mehta.demo@Company A.test', pincode: '500081' },
+  { name: 'Ananya Rao', mobile: '9899000002', email: 'ananya.rao.demo@Company A.test', pincode: '500032' },
+  { name: 'Rohan Sharma', mobile: '9899000003', email: 'rohan.sharma.demo@Company A.test', pincode: '500034' },
+  { name: 'Priya Nair', mobile: '9899000004', email: 'priya.nair.demo@Company A.test', pincode: '500016' },
+  { name: 'Ishaan Reddy', mobile: '9899000005', email: 'ishaan.reddy.demo@Company A.test', pincode: '500003' },
+  { name: 'Meera Kulkarni', mobile: '9899000006', email: 'meera.kulkarni.demo@Company A.test', pincode: '500074' },
+  { name: 'Kabir Joshi', mobile: '9899000007', email: 'kabir.joshi.demo@Company A.test', pincode: '500060' },
+  { name: 'Saanvi Iyer', mobile: '9899000008', email: 'saanvi.iyer.demo@Company A.test', pincode: '500089' },
+  { name: 'Vihaan Patel', mobile: '9899000009', email: 'vihaan.patel.demo@Company A.test', pincode: '500049' },
+  { name: 'Diya Menon', mobile: '9899000010', email: 'diya.menon.demo@Company A.test', pincode: '500039' },
 ];
 
 const toRadians = (value) => (value * Math.PI) / 180;
@@ -716,7 +716,7 @@ const seed = async () => {
       }),
     ]);
 
-    console.log('\nKHAIVIO CLIENT DEMO DATA SEEDED');
+    console.log('\nCompany A CLIENT DEMO DATA SEEDED');
     console.log(`Active outlets: ${outletCount}`);
     console.log(`Kitchen accounts in database: ${kitchenCount}`);
     console.log(`Catering manager accounts in database: ${cateringCount}`);

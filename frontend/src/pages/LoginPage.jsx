@@ -126,7 +126,7 @@ export default function LoginPage() {
 
       toast.success(
         data.isNewUser
-          ? 'Welcome to Khaivio!'
+          ? 'Welcome to Company A!'
           : 'Welcome back!'
       );
 

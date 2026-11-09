@@ -875,7 +875,7 @@ const seed = async () => {
     const menuCount = await MenuItem.countDocuments();
     const userCount = await User.countDocuments();
 
-    console.log('\n✅ KHAIVIO SEED COMPLETED SUCCESSFULLY!\n');
+    console.log('\n✅ Company A SEED COMPLETED SUCCESSFULLY!\n');
     console.log('Database summary:');
     console.log(`  Locations       : ${outletCount}`);
     console.log(`  Menu items      : ${menuCount}`);
